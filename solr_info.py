@@ -73,7 +73,7 @@ def fetch_data():
         handle = urllib2.Request(stats_url)
 
         if SOLR_LOGIN and SOLR_PASSWORD:
-            authheader =  "Basic %s" % base64.encodestring('%s:%s' % (SOLR_LOGIN, SOLR_PASSWORD))
+            authheader =  "Basic %s" % base64.b64encode('%s:%s' % (SOLR_LOGIN, SOLR_PASSWORD))
             handle.add_header("Authorization", authheader)
 
         stats = urllib2.urlopen(handle)
